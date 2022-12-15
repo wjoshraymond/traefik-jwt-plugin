@@ -472,10 +472,10 @@ func (jwtPlugin *JwtPlugin) extractTokenFromHeader(request *http.Request) (strin
 	if !ok {
 		return "", fmt.Errorf("google-assistant-signature header missing")
 	}
-	auth := authHeader[0]
-	if !strings.HasPrefix(auth, "Bearer ") {
-		return "", fmt.Errorf("authorization type not Bearer")
-	}
+	//auth := authHeader[0]
+   //if !strings.HasPrefix(auth, "Bearer ") {
+	//#	return "", fmt.Errorf("authorization type not Bearer")
+	//}
 	return authHeader, nil
 }
 
