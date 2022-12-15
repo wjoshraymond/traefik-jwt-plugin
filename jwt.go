@@ -468,15 +468,15 @@ func (jwtPlugin *JwtPlugin) ExtractToken(request *http.Request) (*JWT, error) {
 }
 
 func (jwtPlugin *JwtPlugin) extractTokenFromHeader(request *http.Request) (string, error) {
-	authHeader, ok := request.Header["Authorization"]
+	authHeader, ok := request.Header["google-assistant-signature"]
 	if !ok {
-		return "", fmt.Errorf("authorization header missing")
+		return "", fmt.Errorf("google-assistant-signature header missing")
 	}
 	auth := authHeader[0]
 	if !strings.HasPrefix(auth, "Bearer ") {
 		return "", fmt.Errorf("authorization type not Bearer")
 	}
-	return auth[7:], nil
+	return authHeader, nil
 }
 
 func (jwtPlugin *JwtPlugin) extractTokenFromCookie(request *http.Request) (string, error) {
